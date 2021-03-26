@@ -8,10 +8,8 @@ from maskgan.runs.distributed_model import MaskGANModel
 from maskgan.utils.logger import get_tqdm_config
 from maskgan.utils.sequence_recovery import pretty_print
 from maskgan.utils.saver import Saver
-from maskgan.optim import ClippedAdam
 from maskgan.utils.summary import TensorboardSummary
 from dataloaders import make_data_loader
-from maskgan.utils.lr_scheduler import WarmupCosineSchedule, WarmupCosineWithHardRestartsSchedule
 
 
 class MaskGANTrainer(object):
@@ -40,15 +38,11 @@ class MaskGANTrainer(object):
         model = MaskGANModel(args, task, pretrain=self.pretrain)
 
         # Define maskgan optimizer
-        # optimizer = ClippedAdam(model.parameters(), lr=args.lr)
-        # optimizer.set_clip(clip_value=args.optim_clip_value)
-        optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)  # change ClippedAdam to AdamW
+        optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
 
         # Define learning scheduler
         self.lr_scheduler = \
             torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=args.lr_gamma)
-        # self.lr_scheduler = WarmupCosineSchedule(optimizer, warmup_steps=args.warmup_steps, t_total=args.epochs)
-        # self.lr_scheduler = WarmupCosineWithHardRestartsSchedule(optimizer, warmup_steps=args.warmup_steps, t_total=args.epochs)
 
         # Using cuda
         self.model, self.optimizer = model, optimizer
