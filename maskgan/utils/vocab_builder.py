@@ -3,8 +3,6 @@ import os
 import torch
 from utils.mypath import data_path
 
-from torchtext.data import Field, TabularDataset
-
 
 if not os.path.exists(os.path.join(data_path, 'vocab')):
     os.makedirs(os.path.join(data_path, 'vocab'))
@@ -48,32 +46,3 @@ class VocabBuilder:
 
         if self.vocab_path is not None:
             torch.save(self._vocab, self.vocab_path)
-
-    """
-    def rebuild_vocab(self):
-        TEXT = Field(sequential=True,
-                     use_vocab=True,
-                     eos_token='<eos>',
-                     tokenize=lambda x: "_".join(x).split('_'),
-                     lower=False,
-                     include_lengths=False,
-                     batch_first=True)
-
-        data_set = TabularDataset(
-            path=os.path.join(data_path, 'chembl26_canon_train.csv'),
-            format='csv',
-            skip_header=True,
-            fields=[('vocab', TEXT)]
-        )
-
-        # make vocab using torchtext
-        TEXT.build_vocab(data_set)  # about train data
-
-        self._vocab = dict(TEXT.vocab.stoi)
-        mask = {self.mask_builder.mask_token: len(self._vocab)}
-
-        self._vocab.update(mask)
-
-        if self.vocab_path is not None:
-            torch.save(self._vocab, self.vocab_path)
-    """
