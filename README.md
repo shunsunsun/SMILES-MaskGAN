@@ -15,5 +15,5 @@ GuacaMol: https://github.com/BenevolentAI/guacamol
 MaskGAN: https://github.com/jerinphilip/MaskGAN.pytorch\
 Fairseq: ~TODO
 
-## C. SMILES-MaskGAN training
+## D. SMILES-MaskGAN training
 command line: python run_maskgan.py
