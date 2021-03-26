@@ -17,7 +17,6 @@ Fairseq: This code uses the package provided at the https://github.com/pytorch/f
 
 ## D. SMILES-MaskGAN training
 
-'''
-python run_maskgan.py
-'''
+Command line: > python run_maskgan.py
+
   
