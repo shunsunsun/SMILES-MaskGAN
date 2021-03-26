@@ -16,4 +16,4 @@ Refer to the https://github.com/jerinphilip/MaskGAN.pytorch link for the PyTorch
 Fairseq: This code uses the package provided at the https://github.com/pytorch/fairseq link.
 
 ## D. SMILES-MaskGAN training
-code 1 python run_maskgan.py
+  python run_maskgan.py
