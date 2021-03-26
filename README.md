@@ -4,7 +4,7 @@ This repository contains the original PyTorch implementation of the paper 'Gener
 ## A. Requirements
 Anaconda (>= 4.8.3)\
 PyTorch (tested on 1.7.0)\
-PyTorch Ligthning (tested on 1.1.2)\
+PyTorch Lightning (tested on 1.1.2)\
 Tensorboard (tested on 2.4.0)
 
 ## B. Dataset
